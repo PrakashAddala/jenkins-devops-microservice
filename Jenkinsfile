@@ -13,13 +13,14 @@
 //declarative
 
 pipeline{
-	//agent any
-	agent {docker{ image 'maven:3.6.3'}}
+	agent any
+	//agent {docker{ image 'maven:3.6.3'}}
 	stages{
 		stage('Build'){
 			steps{
-				sh "mvn --version"
-				echo 'Build'
+				echo "Build Tag - $BUILD_TAG"
+				echo "BUILD_URL- $BUILD_URL"
+				echo "BUILD_NUMBER- $BUILD_NUMBER"
 			}
 		}
 		stage('Test'){
