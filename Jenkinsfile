@@ -13,21 +13,20 @@
 //declarative
 
 pipeline{
-	agent any
+	//agent any
 	//agent {docker{ image 'maven:3.6.3'}}
 
-	// environment {
-	// 	dockerHome= withtool 'myDocker'
-	// 	mavenHome= tool 'myMaven'
-	// 	env.PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
-	// }
+	environment {
+		dockerHome= withtool 'myDocker'
+		mavenHome= tool 'myMaven'
+		env.PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+	}
+
+	agent any
 
 	stages{
 		stage('Build'){
 			steps{
-				def dockerHome= withtool 'myDocker'
-				def mavenHome= tool 'myMaven'
-				env.PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
 				sh 'docker version'
 				sh 'mvn --version'
 				echo "Build Tag - $BUILD_TAG"
