@@ -24,7 +24,7 @@ pipeline{
 	stages{
 		stage('Build'){
 			steps{
-				sh "maven --version"
+				sh "mvn --version"
 				sh "docker --version"
 				echo "Build Tag - $BUILD_TAG"
 				echo "BUILD_URL- $BUILD_URL"
