@@ -21,6 +21,7 @@ pipeline{
 				echo "Build Tag - $BUILD_TAG"
 				echo "BUILD_URL- $BUILD_URL"
 				echo "BUILD_NUMBER- $BUILD_NUMBER"
+				echo "PATH- $PATH"
 			}
 		}
 		stage('Test'){
