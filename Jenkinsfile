@@ -15,13 +15,16 @@
 pipeline{
 	//agent any
 	//agent {docker{ image 'maven:3.6.3'}}
-
-
-
 	agent any
-	tools {
-  		maven 'myMaven'
-		dockerTool 'myDocker'
+	// tools {
+  	// 	maven 'myMaven'
+	// 	dockerTool 'myDocker'
+	// }
+
+	environment{
+		dockerHome= tool 'myDocker'
+		mavenHome= tool 'myMaven'
+		PATH = '$dockerHome/bin:$mavenHome/bin:$PATH'
 	}
 	stages{
 		stage('Build'){
