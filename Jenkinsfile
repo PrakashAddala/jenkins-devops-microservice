@@ -27,12 +27,12 @@ pipeline{
 	stages{
 		stage('Build'){
 			steps{
+				echo "PATH- $PATH"
 				sh 'docker version'
 				sh 'mvn --version'
 				echo "Build Tag - $BUILD_TAG"
 				echo "BUILD_URL- $BUILD_URL"
-				echo "BUILD_NUMBER- $BUILD_NUMBER"
-				echo "PATH- $PATH"
+				echo "BUILD_NUMBER- $BUILD_NUMBER"			
 			}
 		}
 		stage('Test'){
