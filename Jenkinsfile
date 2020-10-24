@@ -19,7 +19,10 @@ pipeline{
 
 
 	agent any
-
+	tools {
+  		maven 'myMaven'
+		dockerTool 'myDocker'
+	}
 	stages{
 		stage('Build'){
 			steps{
