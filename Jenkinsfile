@@ -27,7 +27,7 @@ pipeline{
 		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
 	}
 	stages{
-		stage('Build'){
+		stage('Checkout'){
 			steps{
 				echo "PATH- $PATH"
 				sh 'docker version'
@@ -37,11 +37,22 @@ pipeline{
 				echo "BUILD_NUMBER- $BUILD_NUMBER"			
 			}
 		}
+		stage('Compile'){
+			steps{
+				sh "mvn clean compile"
+			}
+		}
 		stage('Test'){
 			steps{
-				echo "Test"
+				sh "mvn test"
 			}
 		}		
+		
+		stage('Integration Test'){
+			steps{
+				sh "mvn failsage:integration-test fail-safe:verify"
+			}
+		}
 	}
 	post{
 			always{
